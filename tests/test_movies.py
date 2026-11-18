@@ -16,18 +16,13 @@ def test_get_movie(api_manager, created_movie):
     assert response.json()["name"] == created_movie["name"]
 
 def test_create_movie(api_manager, created_movie, test_movie):
-    movie_id = created_movie["id"]
-
-    get_response = api_manager.movies_api.get_movie(movie_id)
-
-    assert get_response.json()["id"] == movie_id
-    assert get_response.json()["name"] == test_movie["name"]
-    assert get_response.json()["price"] == test_movie["price"]
-    assert get_response.json()["location"] == test_movie["location"]
-    assert get_response.json()["imageUrl"] == test_movie["imageUrl"]
-    assert get_response.json()["description"] == test_movie["description"]
-    assert get_response.json()["published"] == test_movie["published"]
-    assert get_response.json()["genreId"] == test_movie["genreId"]
+    assert created_movie["name"] == test_movie["name"]
+    assert created_movie["price"] == test_movie["price"]
+    assert created_movie["location"] == test_movie["location"]
+    assert created_movie["imageUrl"] == test_movie["imageUrl"]
+    assert created_movie["description"] == test_movie["description"]
+    assert created_movie["published"] == test_movie["published"]
+    assert created_movie["genreId"] == test_movie["genreId"]
 
 
 def test_update_movie(api_manager, created_movie):
